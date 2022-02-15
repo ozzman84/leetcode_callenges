@@ -133,29 +133,53 @@ p max_area(5, 4, [3,1], [1]) #6
 p max_area(5, 4, [3], [3]) #9
 
 
-def max_profit(prices)
-  profit = 0
-  min_price = prices[0]
-  prices[1..-1].each do |future_price|
-    min_price = future_price if future_price < min_price
-    income = furture_price - min_price
-    profit = income if income > profit
-  end
-  return profit
-end
-
-p max_profit([7,1,5,3,6,4]) #5
-p max_profit([7,6,4,3,1]) #0
+# def max_profit(prices)
+#   profit = 0
+#   min_price = prices[0]
+#   prices[1..-1].each do |future_price|
+#     min_price = future_price if future_price < min_price
+#     income = furture_price - min_price
+#     profit = income if income > profit
+#   end
+#   return profit
+# end
+#
+# p max_profit([7,1,5,3,6,4]) #5
+# p max_profit([7,6,4,3,1]) #0
 
 
 # Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
 #
 # A subarray is a contiguous part of an array.
-# find continuous subarray with one number which has at least the number 
-def max_sub_array(nums)
+# find continuous subarray with one number which has at least the number
+# def max_sub_array(nums)
+#
+# end
+#
+# p max_sub_array([-2,1,-3,4,-1,2,1,-5,4]) #6
+# p max_sub_array([1]) #1
+# p max_sub_array([5,4,-1,7,8]) #23
 
+
+
+def length_of_last_word(s)
+    w = ''
+    x = nil
+    s.reverse.each_char do |l|
+      break if x == true
+        if l == ' ' && x == nil
+            next
+        elsif l != ' '
+            w = l + w
+            x = false
+        else l == ' '
+            x = true
+        end
+    end
+    w
 end
 
-p max_sub_array([-2,1,-3,4,-1,2,1,-5,4]) #6
-p max_sub_array([1]) #1
-p max_sub_array([5,4,-1,7,8]) #23
+
+p length_of_last_word("Hello World")
+p length_of_last_word("   fly me   to   the moon  ")
+p length_of_last_word("luffy is still joyboy")

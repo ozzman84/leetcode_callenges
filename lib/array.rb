@@ -183,3 +183,27 @@ end
 p length_of_last_word("Hello World")
 p length_of_last_word("   fly me   to   the moon  ")
 p length_of_last_word("luffy is still joyboy")
+
+
+
+def solution(results, count = 0)
+  return count if results.length < 3
+
+  max = 2
+  diff = results[0] - results[1]
+
+  results[1..-1].each_cons(2) do |n1, n2|
+    if diff == n1 - n2
+      max += 1
+    else
+      break
+    end
+  end
+
+  count += max - 2 if max > 2
+
+  results.delete_at(0)
+  solution(results, count)
+end
+
+p solution([-1, 1, 3, 3, 3, 2, 3, 2, 1, 0])
